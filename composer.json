@@ -1,0 +1,68 @@
+{
+    "name": "ephraitech/saas-starter",
+    "description": "Starter for CodeIgniter 4 products built from switchable modules: one install per client or multi-tenant SaaS, on ephraitech/ci4-platform.",
+    "type": "project",
+    "keywords": [
+        "codeigniter4",
+        "starter",
+        "saas",
+        "multi-tenant",
+        "modular monolith"
+    ],
+    "license": "MIT",
+    "homepage": "https://github.com/etus-ephraitech/saas-starter",
+    "authors": [
+        {
+            "name": "Ephraitech Unified Solutions",
+            "homepage": "https://github.com/etus-ephraitech"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/etus-ephraitech/saas-starter/issues",
+        "source": "https://github.com/etus-ephraitech/saas-starter"
+    },
+    "require": {
+        "php": "^8.2",
+        "ext-intl": "*",
+        "ext-mbstring": "*",
+        "codeigniter4/framework": "^4.7",
+        "ephraitech/ci4-auth": "^0.12",
+        "ephraitech/ci4-forms": "^0.5",
+        "ephraitech/ci4-platform": "^0.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Config\\": "app/Config/"
+        },
+        "exclude-from-classmap": [
+            "**/Database/Migrations/**"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+            "@php -r \"file_exists('.env') || copy('env', '.env');\"",
+            "@php spark key:generate --force",
+            "@php spark platform:publish"
+        ],
+        "post-update-cmd": [
+            "@php spark platform:publish"
+        ],
+        "test": "phpunit"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
