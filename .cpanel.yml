@@ -1,0 +1,8 @@
+---
+# cPanel → Git Version Control → Manage → Pull or Deploy → "Deploy HEAD Commit"
+# runs these tasks from the repository folder. The script installs packages,
+# backs up the database, runs migrations, publishes assets, syncs roles and
+# checks the setup. See deploy/DEPLOY.md.
+deployment:
+  tasks:
+    - /bin/bash deploy/cpanel-deploy.sh
